@@ -1,0 +1,97 @@
+import requests
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import time  # Импортируем модуль для задержки
+
+# Настройки для подключения к Jira
+JIRA_URL = "https://dpir.skhalyk.kz/jira"
+EMAIL = "sultanova.naz"
+API_TOKEN = "Qwerty123456789!"
+BOARD_ID = 35  # ID вашей доски
+
+# Настройки для Google Sheets
+SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+CREDS = ServiceAccountCredentials.from_json_keyfile_name("jiro-448410-b68f41c814e4.json", SCOPE)
+client = gspread.authorize(CREDS)
+
+# Открытие таблицы
+spreadsheet = client.open("from jira")  # Название вашей таблицы
+worksheet = spreadsheet.get_worksheet(0)  # Первый лист таблицы
+
+# Очистка Google Sheets перед записью
+worksheet.clear()
+worksheet.append_row(["ID Задачи", "Исполнитель", "Создатель", "Статус", "Изменение статусов"])
+
+# Параметры для запросов
+url = f"{JIRA_URL}/rest/agile/1.0/board/{BOARD_ID}/issue"
+params = {
+    "fields": "key,assignee,creator,status",  # Поля для получения
+    "expand": "changelog",  # Добавляем историю изменений
+}
+
+# Инициализация переменных для пагинации
+start_at = 0  # Индекс начала
+is_last = False  # Флаг последней страницы
+
+# Обработка задач в цикле
+while not is_last:
+    params["startAt"] = start_at  # Указываем начальный индекыс для текущей страницы
+
+    response = requests.get(
+        url,
+        auth=(EMAIL, API_TOKEN),
+        params=params,
+        verify=False  # Отключаем проверку SSL
+    )
+
+    if response.status_code == 200:
+        data = response.json()
+        issues = data.get("issues", [])
+        is_last = data.get("isLast", False)  # Флаг последней страницы
+
+        if not issues:
+            print("Больше задач нет. Выход из цикла.")
+            break
+
+        # Обрабатываем задачи
+        for issue in issues:
+            issue_key = issue["key"]
+            fields = issue["fields"]
+            assignee = fields["assignee"]["displayName"] if fields["assignee"] else "Не назначен"
+            creator = fields["creator"]["displayName"]
+            status = fields["status"]["name"]
+
+            # Проверяем статус задачи перед записью в таблицу
+
+            # Получение изменений статусов
+            changelog = issue.get("changelog", {}).get("histories", [])
+            status_changes = []
+            for history in changelog:
+                for item in history.get("items", []):
+                    if item["field"] == "status":
+                        from_status = item["fromString"]
+                        to_status = item["toString"]
+                        changed_time = history["created"]
+                        status_changes.append(f"{from_status} -> {to_status} ({changed_time})")
+
+            # Записываем в таблицу
+            worksheet.append_row([
+                issue_key,
+                assignee,
+                creator,
+                status,
+                "\n".join(status_changes)
+            ])
+
+        # Увеличиваем индекс для следующей страницы
+        start_at += len(issues)
+        print(f"Загружено задач: {start_at}")
+
+        # Задержка на 1 секунду перед следующим запросом, чтобы избежать превышения квоты
+        time.sleep(60)
+
+    else:
+        print(f"Ошибка при запросе задач: {response.status_code}, {response.text}")
+        break
+
+print("Задачи из Backlog успешно загружены.")
