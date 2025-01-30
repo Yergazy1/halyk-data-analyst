@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "jiro-448410",
+  "private_key_id": "b68f41c814e43421111cf182ae2fe944cf4b4871",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC0UTJr1SvWkGo5\ngm2kCSpdkJ53pWJUAbdzSTLoB8BcMpikAznLHO2BsSkdGjiUhEMGbrIUiCM6+BL+\nUC05S4Xg5wQ1rOcu1gMxGb5jFl7w02/zs3JCRYv9DyescjzqBpDxXe1GfsfOIh+v\nNA917BUCdbQwz5iKvRfQhpNPKT0Tsh6D2WigCzZDTLWMIco9EThJBI8r1cCcaiuP\nVbi6Dh9YzGPcbWe/VE9/duCJlJv6/l6ytd1sFR4JZjQ8IJnBTPtt1vYvNnuPTZtB\nckutpYQ2+W4vOcDIe/AyYl59wMEh2ez6z+viOcFGr1cC6JtVNC01gQHS0YhIE3kl\nMU5aj67tAgMBAAECggEAIaFPNRth/LeciDNSPZjUBPVXCNuYljBnxaGuU+Y2Mzvg\nih5r5fz0Mw8Wqu3cBZ8RXR7CKeAmKfZgnHvZo2j5hDOx7kzcJTkXCU5S2uouNN5K\nb/pU4hVUgZMVBC2ePMuStuGcwlwc6c4leKjOBWFNndLUE5J0UdPooCSpTsdTM9vg\npB3GSHSxiIhmi1i/IvrIcOsQaGBSzgxo9bfl5K6wd+fqEbNIpH5hVc3jmDg1/+YL\nH2+PrmPWUcMSNL4g8uOxZKlydTazzE7hG/Af8RNkutKvOb2IlwUOW8mQgfho0F3r\nAGL8T2WztDXdl6n5K+fXR+ngR84469OWaKMOCKGb5QKBgQD4kNG1p/R08jsbt3gb\nOvbbzZP+mRAr8XVorlbt6m0XWD/k10dUmFpUiUxQlSiXpYJdiT0vRC6bPbR+2V0s\ncGXShz6/wtgYvqAlv9FV6y99IcLsMhbQwh5tSzrGnrFcIefjZxBVhjHoLqUqR8PJ\nlg6Qg8apfEJ/KCvCD2rDFlBrIwKBgQC5tdKY7kQ++gbADxydZmKWto3r7CADfw1+\n/w2WQAYgGKsd88H5xcuXuXcq5akQgAq8//Ih/7Kjb11DM8y2M4FCvQYamH6eZqTt\nDyoKsxS/DS7B5sCTu8UNGHVvtdKpPYw4Zt2LNY5ZW4fdUh4/Dnulia3xLI4kCWvj\ne12kTSfmrwKBgQCMEP87QBOOutj3+2Dg508n+SZGN3ZXbM7eWC+ADbO/jekjSPRX\nBSsRq/SnDAY9vfRCRQ2HTwJ8VD8bo9zPJ98YzUFcyaz/9JtF6ltJ8SdnedjfRDJ7\nHIgMynGqbs4+vpRvHiqkJuSEk5RayOnY9Ifsg3U1GGJYSQivaASfPjm+xQKBgGPd\nPJR0fEqJVRvuhGq35gg5vvPBFC4NIorKSNolL6YO3eXLcOIJ1UOPvl9ZBKMU17Fu\nyRwzTjLI7hP3RPwtkjL7Rs8CdgRkGghIgUkjp+JdCmnG1oQbEwnJv00FL3VG3aJu\n3m+/qv6uU89WG2G5PhB0iw8H8J+8WUII0wBJZU2NAoGBAMCQoyDhtyOhuLvRAgZz\nXn2lG+gh2NlEB4yIVoHxYlf4A8umkEnR+pScthI6fAqkOL3suGYKidqbBoQ9/euO\n9jhA+b3th+u3ojcXYUxGMxEZIGyhMnkGn32CsgXeiOuQMVbi6GQf/ksF47xAOtRO\nSMw9TABhbTTqvr9esCYTOYdR\n-----END PRIVATE KEY-----\n",
+  "client_email": "python-api-service-account@jiro-448410.iam.gserviceaccount.com",
+  "client_id": "113962073062149679643",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/python-api-service-account%40jiro-448410.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
